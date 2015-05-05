@@ -17,3 +17,12 @@ D:\SHARE\Softwares For Developers\Utilities\Utility2 - NewsHandler\NewsHandler\o
 D:\SHARE\Softwares For Developers\Utilities\Utility2 - NewsHandler\NewsHandler\obj\Debug\NewsHandler.exe
 D:\SHARE\Softwares For Developers\Utilities\Utility2 - NewsHandler\NewsHandler\obj\Debug\NewsHandler.pdb
 D:\SHARE\Softwares For Developers\Utilities\Utility2 - NewsHandler\NewsHandler\obj\Debug\NewsHandler.csprojResolveAssemblyReference.cache
+F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\bin\Debug\NewsHandler.exe.config
+F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\bin\Debug\NewsHandler.exe
+F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\bin\Debug\NewsHandler.pdb
+F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.csprojResolveAssemblyReference.cache
+F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\MyUtility.NewsHandler.resources
+F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\MyUtility.Properties.Resources.resources
+F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.csproj.GenerateResource.Cache
+F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.exe
+F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.pdb

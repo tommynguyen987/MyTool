@@ -54,7 +54,7 @@ namespace MyUtility.Data.News
                         form.InvokeMember("submit");                        
                     }
 
-                    if (wbr.Url.AbsoluteUri == "https://mail.google.com/mail/u/0/#inbox")
+                    if (wbr.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
                     {
                         RedirectActiveLink(wbr);                        
                         wbr.DocumentCompleted -= wbr_DocumentCompleted_AccountConfirm;
