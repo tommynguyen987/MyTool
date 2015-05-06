@@ -24,8 +24,7 @@ namespace MyUtility.Data.News
         }
 
         private static void RedirectActiveLink(System.Windows.Forms.WebBrowser wbr)
-        {   
-            //wbr.Url = new Uri("https://mail.google.com/mail/u/0/#inbox");
+        {               
             System.Text.StringBuilder scriptCode = new System.Text.StringBuilder();
             scriptCode.Append("function ExecuteJS(){");
             scriptCode.Append("    alert('hello');");
