@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI.HtmlControls;
 
 namespace MyUtility.Data.News
 {
@@ -9,9 +10,7 @@ namespace MyUtility.Data.News
             var url = "http://vietid.net/OauthServerV2/RegisterV2?app_key=07234206219b51690a3bc234115a34f2&clearsession=1&oauth_token=";
             wbr.Url = new Uri(url);
             wbr.ScriptErrorsSuppressed = true;
-            //wbr.DocumentCompleted += wbr_DocumentCompleted_PostRequest;
-            //System.Threading.Thread.Sleep(3000);
-            AccountConfirm(wbr);                         
+            wbr.DocumentCompleted += wbr_DocumentCompleted_PostRequest;            
             //timer.Enabled = true;
             //timer.Start();
         }
@@ -21,22 +20,31 @@ namespace MyUtility.Data.News
             var url = "https://accounts.google.com/ServiceLogin?service=mail&continue=https://mail.google.com/mail/&hl=vi";
             wbr.Url = new Uri(url);
             wbr.ScriptErrorsSuppressed = true;
-            wbr.DocumentCompleted += wbr_DocumentCompleted_AccountConfirm;                        
+            wbr.DocumentCompleted += wbr_DocumentCompleted_AccountConfirm;            
         }
 
         private static void RedirectActiveLink(System.Windows.Forms.WebBrowser wbr)
-        {            
-            string codeString = String.Format("$('.Cp .xS .y6 span:first-child').html();");
-            object title = wbr.Document.InvokeScript("eval", new[] { codeString });
-            if (title != null)
-            {
-                if (title.ToString().IndexOf("Kích hoạt tài khoản VietID") != -1)
-                {
-                    string script = "<script> function ShowEmail() { $('.aqw').click(function(){ alert('111'); }); } </script>";
-                    wbr.Document.CreateElement(script);
-                    wbr.Document.InvokeScript("ShowEmail()");
-                }    
-            }            
+        {   
+            //wbr.Url = new Uri("https://mail.google.com/mail/u/0/#inbox");
+            System.Text.StringBuilder scriptCode = new System.Text.StringBuilder();
+            scriptCode.Append("function ExecuteJS(){");
+            scriptCode.Append("    alert('hello');");
+            scriptCode.Append("    $('.Cp .xS .y6').each(function(){");
+            scriptCode.Append("        alert('111');");
+            scriptCode.Append("        var t = $(this).children(\"span:first-child\").html();");
+            scriptCode.Append("        if(t.indexOf(\"Kích hoạt tài khoản VietID\") != -1){");
+            scriptCode.Append("            alert('2222');");
+            scriptCode.Append("            $('.aqw').click(function(){");
+            scriptCode.Append("                alert('333');");
+            scriptCode.Append("            });");
+            scriptCode.Append("        }");
+            scriptCode.Append("    });");
+            scriptCode.Append("}");
+
+            //wbr.Document.InvokeScript("eval", new Object[] { scriptCode.ToString() });
+            wbr.Document.InvokeScript("execScript", new Object[] { scriptCode.ToString(), "JavaScript" });
+            wbr.Document.InvokeScript("ExecuteJS");                
+            
         }
 
         private static void wbr_DocumentCompleted_AccountConfirm(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
@@ -56,11 +64,11 @@ namespace MyUtility.Data.News
 
                     if (wbr.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
                     {
-                        RedirectActiveLink(wbr);                        
+                        RedirectActiveLink(wbr);
                         wbr.DocumentCompleted -= wbr_DocumentCompleted_AccountConfirm;
                         Login();
                     }
-                }
+                }                
             }
             catch (Exception ex)
             {
@@ -73,6 +81,55 @@ namespace MyUtility.Data.News
 
         }
 
+        private static string Get8CharacterRandomString()
+        {
+            return System.IO.Path.GetRandomFileName().Replace(".", "").Substring(0, 8);
+            //return Guid.NewGuid().ToString().Substring(0, 8);
+        }
+
+        public static string GetRandomAlphaNumeric()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+
+            return finalString;
+        }
+
+        private static string GetUniqueKey(int maxSize)
+        {
+            char[] chars = new char[62];
+            chars =
+            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
+            byte[] data = new byte[1];
+            using (System.Security.Cryptography.RNGCryptoServiceProvider crypto = new System.Security.Cryptography.RNGCryptoServiceProvider())
+            {
+                crypto.GetNonZeroBytes(data);
+                data = new byte[maxSize];
+                crypto.GetNonZeroBytes(data);
+            }
+            System.Text.StringBuilder result = new System.Text.StringBuilder(maxSize);
+            foreach (byte b in data)
+            {
+                result.Append(chars[b % (chars.Length)]);
+            }
+            return result.ToString();
+        }
+
+        private static string GetEmail()
+        {
+            //return GetUniqueKey(8) + "@gmail.com";
+            return Get8CharacterRandomString() + "@gmail.com";
+            //return GetRandomAlphaNumeric() + "@gmail.com";
+        }
+
         private static void wbr_DocumentCompleted_PostRequest(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
         {
             System.Windows.Forms.WebBrowser wbr = sender as System.Windows.Forms.WebBrowser;
@@ -83,17 +140,16 @@ namespace MyUtility.Data.News
                     System.Windows.Forms.HtmlElement form = wbr.Document.GetElementById("show_connect");
                     if (form != null)
                     {
-                        wbr.Document.GetElementById("email").SetAttribute("value", UserInfo.Email = "buitran986@gmail.com");
+                        wbr.Document.GetElementById("email").SetAttribute("value", GetEmail());//UserInfo.Email = "buitran986@gmail.com");
                         wbr.Document.GetElementById("password").SetAttribute("value", UserInfo.Password = "12345678");
                         wbr.Document.GetElementById("confirm_password").SetAttribute("value", "12345678");
                         wbr.Document.GetElementById("full_name").SetAttribute("value", UserInfo.Fullname = "tester");
                         form.InvokeMember("submit");
-                        //string script = "<script> function HideForm() { $('#myModal').hide(); } </script>";                        
-                        //wbr.Document.CreateElement(script);
-                        //wbr.Document.InvokeScript("HideForm()");                        
 
                         wbr.DocumentCompleted -= wbr_DocumentCompleted_PostRequest;
-                    }
+
+                        AccountConfirm(wbr);
+                    }                    
                 }
             }
             catch (Exception ex)

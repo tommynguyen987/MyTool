@@ -116,6 +116,15 @@ namespace MyUtility
         {
 
         }
+
+        public static void AddScriptElement(System.Windows.Forms.WebBrowser wbr, string scriptCode)
+        {
+            dynamic document = wbr.Document;
+            dynamic head = document.GetElementsByTagName("head")[0];
+            dynamic scriptEl = document.CreateElement("script");
+            scriptEl.SetAttribute("text", scriptCode.ToString());
+            head.AppendChild(scriptEl);                       
+        }
         #endregion
 
         private void NewsHandler_Load(object sender, EventArgs e)
@@ -184,7 +193,7 @@ namespace MyUtility
                     switch (cbListWebsites.SelectedIndex)
                     {
                         case 1://57:
-                            Rongbay.PostRequest(webBrowser1, timer1);
+                            Rongbay.PostRequest(webBrowser1, timer1);                            
                             break;
                         case 2://58:
                             Raocucnhanh.PostRequest(webBrowser1, timer1);

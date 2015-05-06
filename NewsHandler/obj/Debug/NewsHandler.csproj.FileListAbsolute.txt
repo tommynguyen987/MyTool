@@ -26,3 +26,12 @@ F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\MyUtility.Properties.Resou
 F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.csproj.GenerateResource.Cache
 F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.exe
 F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.pdb
+D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\NewsHandler.exe.config
+D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\NewsHandler.exe
+D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\NewsHandler.pdb
+D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\NewsHandler.csprojResolveAssemblyReference.cache
+D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\MyUtility.NewsHandler.resources
+D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\MyUtility.Properties.Resources.resources
+D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\NewsHandler.csproj.GenerateResource.Cache
+D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\NewsHandler.exe
+D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\NewsHandler.pdb
