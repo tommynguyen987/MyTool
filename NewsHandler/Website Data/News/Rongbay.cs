@@ -23,11 +23,11 @@ namespace MyUtility.Data.News
             wbr.DocumentCompleted += wbr_DocumentCompleted_AccountConfirm;            
         }
 
-        private static void RedirectActiveLink(System.Windows.Forms.WebBrowser wbr)
-        {               
+        public static void RedirectActiveLink(System.Windows.Forms.WebBrowser wbr)
+        {
             System.Text.StringBuilder scriptCode = new System.Text.StringBuilder();
             scriptCode.Append("function ExecuteJS(){");
-            scriptCode.Append("    alert('hello');");
+            scriptCode.Append("    alert('hiii!!');");
             scriptCode.Append("    $('.Cp .xS .y6').each(function(){");
             scriptCode.Append("        alert('111');");
             scriptCode.Append("        var t = $(this).children(\"span:first-child\").html();");
@@ -42,8 +42,9 @@ namespace MyUtility.Data.News
 
             //wbr.Document.InvokeScript("eval", new Object[] { scriptCode.ToString() });
             wbr.Document.InvokeScript("execScript", new Object[] { scriptCode.ToString(), "JavaScript" });
-            wbr.Document.InvokeScript("ExecuteJS");                
-            
+            wbr.Document.InvokeScript("ExecuteJS");
+
+            Login();
         }
 
         private static void wbr_DocumentCompleted_AccountConfirm(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
@@ -58,15 +59,16 @@ namespace MyUtility.Data.News
                     {
                         wbr.Document.GetElementById("Email").SetAttribute("value", UserInfo.Email = "buitran986@gmail.com");
                         wbr.Document.GetElementById("Passwd").SetAttribute("value", UserInfo.Password = "yeuem1234567890");
-                        form.InvokeMember("submit");                        
+                        form.InvokeMember("submit");
+                        wbr.DocumentCompleted -= wbr_DocumentCompleted_AccountConfirm;
                     }
 
-                    if (wbr.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
-                    {
-                        RedirectActiveLink(wbr);
-                        wbr.DocumentCompleted -= wbr_DocumentCompleted_AccountConfirm;
-                        Login();
-                    }
+                    //if (wbr.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
+                    //{
+                    //    RedirectActiveLink(wbr);
+                    //    wbr.DocumentCompleted -= wbr_DocumentCompleted_AccountConfirm;
+                    //    Login();
+                    //}
                 }                
             }
             catch (Exception ex)

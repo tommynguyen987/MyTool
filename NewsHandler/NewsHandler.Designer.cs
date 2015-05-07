@@ -46,6 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbListWebsiteTypes = new System.Windows.Forms.ComboBox();
             this.chkHandleEveryNews = new System.Windows.Forms.CheckBox();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.myContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -196,6 +197,10 @@
             this.chkHandleEveryNews.UseVisualStyleBackColor = true;
             this.chkHandleEveryNews.CheckedChanged += new System.EventHandler(this.chkHandleEveryNews_CheckedChanged);
             // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // NewsHandler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -245,6 +250,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbListWebsiteTypes;
         private System.Windows.Forms.CheckBox chkHandleEveryNews;
+        private System.Windows.Forms.Timer timer2;
 
 
     }

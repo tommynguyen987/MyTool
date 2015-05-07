@@ -193,7 +193,10 @@ namespace MyUtility
                     switch (cbListWebsites.SelectedIndex)
                     {
                         case 1://57:
-                            Rongbay.PostRequest(webBrowser1, timer1);                            
+                            Rongbay.PostRequest(webBrowser1, timer1);
+                            timer2.Enabled = true;                            
+                            timer2.Interval = 7000;
+                            timer2.Start();
                             break;
                         case 2://58:
                             Raocucnhanh.PostRequest(webBrowser1, timer1);
@@ -424,6 +427,13 @@ namespace MyUtility
                 
             }
         }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            Rongbay.RedirectActiveLink(webBrowser1);
+            timer2.Stop();
+            timer2.Enabled = false;
+        }   
         
         private void NewsHandler_Resize(object sender, EventArgs e)
         {
@@ -453,7 +463,7 @@ namespace MyUtility
         {
             myNotifyIcon.Dispose();
             this.Dispose();
-        }                                                
+        }                                                     
     }
 
     public class UserInfo
