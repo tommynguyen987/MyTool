@@ -194,9 +194,7 @@ namespace MyUtility
                     {
                         case 1://57:
                             Rongbay.PostRequest(webBrowser1, timer1);
-                            timer2.Enabled = true;                            
-                            timer2.Interval = 7000;
-                            timer2.Start();
+                            backgroundWorker1.RunWorkerAsync();
                             break;
                         case 2://58:
                             Raocucnhanh.PostRequest(webBrowser1, timer1);
@@ -321,6 +319,14 @@ namespace MyUtility
             EnableFunctions(true);
         }
 
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            if (!e.Cancel)
+            {
+                Rongbay.RedirectActiveLink(webBrowser1);
+            }
+        }       
+
         private void cbListWebsiteTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (chkHandleEveryNews.Checked)
@@ -427,14 +433,7 @@ namespace MyUtility
                 
             }
         }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            Rongbay.RedirectActiveLink(webBrowser1);
-            timer2.Stop();
-            timer2.Enabled = false;
-        }   
-        
+                
         private void NewsHandler_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
@@ -463,7 +462,7 @@ namespace MyUtility
         {
             myNotifyIcon.Dispose();
             this.Dispose();
-        }                                                     
+        }                                                         
     }
 
     public class UserInfo

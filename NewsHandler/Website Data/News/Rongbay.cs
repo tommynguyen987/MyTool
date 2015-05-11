@@ -25,12 +25,9 @@ namespace MyUtility.Data.News
 
         public static void RedirectActiveLink(System.Windows.Forms.WebBrowser wbr)
         {
-            if (wbr.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
+            //wbr.DocumentCompleted += wbr_DocumentCompleted_RedirectActiveLink;
+            do
             {
-                System.Threading.Thread.Sleep(7000);
-                System.Windows.Forms.WebBrowser w = new System.Windows.Forms.WebBrowser();
-                w.Url = new Uri(wbr.Url,"");
-                wbr.DocumentText = w.DocumentText;
                 System.Text.StringBuilder scriptCode = new System.Text.StringBuilder();
                 scriptCode.Append("function ExecuteJS(){");
                 scriptCode.Append("    $('.Cp .xS .y6').each(function(){");
@@ -44,12 +41,42 @@ namespace MyUtility.Data.News
                 scriptCode.Append("        }");
                 scriptCode.Append("    });");
                 scriptCode.Append("}");
-
                 //wbr.Document.InvokeScript("eval", new Object[] { scriptCode.ToString() });
                 wbr.Document.InvokeScript("execScript", new Object[] { scriptCode.ToString(), "JavaScript" });
-                wbr.Document.InvokeScript("ExecuteJS");
+                wbr.Document.InvokeScript("ExecuteJS");                    
+            } while (wbr.Url.AbsoluteUri.IndexOf("/#inbox") != -1 && wbr.DocumentText.IndexOf("class=\"UI\"") == -1);
+            Login();
+        }
 
-                Login();
+        private static void wbr_DocumentCompleted_RedirectActiveLink(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
+        {
+            System.Windows.Forms.WebBrowser wbr = sender as System.Windows.Forms.WebBrowser;
+            try
+            {
+                if (wbr.ReadyState == System.Windows.Forms.WebBrowserReadyState.Complete)
+                {
+                    System.Text.StringBuilder scriptCode = new System.Text.StringBuilder();
+                    scriptCode.Append("function ExecuteJS(){");
+                    scriptCode.Append("    $('.Cp .xS .y6').each(function(){");
+                    scriptCode.Append("        alert('111');");
+                    scriptCode.Append("        var t = $(this).children(\"span:first-child\").html();");
+                    scriptCode.Append("        if(t.indexOf(\"Kích hoạt tài khoản VietID\") != -1){");
+                    scriptCode.Append("            alert('2222');");
+                    scriptCode.Append("            $('.aqw').click(function(){");
+                    scriptCode.Append("                alert('333');");
+                    scriptCode.Append("            });");
+                    scriptCode.Append("        }");
+                    scriptCode.Append("    });");
+                    scriptCode.Append("}");
+                    //wbr.Document.InvokeScript("eval", new Object[] { scriptCode.ToString() });
+                    wbr.Document.InvokeScript("execScript", new Object[] { scriptCode.ToString(), "JavaScript" });
+                    wbr.Document.InvokeScript("ExecuteJS");
+                    Login();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error!" + System.Environment.NewLine + ex.Message);
             }
         }
 
@@ -70,8 +97,7 @@ namespace MyUtility.Data.News
                     }
 
                     //if (wbr.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
-                    //{
-                    //    System.Threading.Thread.Sleep(7000);
+                    //{                        
                     //    RedirectActiveLink(wbr);
                     //    wbr.DocumentCompleted -= wbr_DocumentCompleted_AccountConfirm;
                     //    Login();

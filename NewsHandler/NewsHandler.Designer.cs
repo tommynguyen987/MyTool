@@ -46,7 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbListWebsiteTypes = new System.Windows.Forms.ComboBox();
             this.chkHandleEveryNews = new System.Windows.Forms.CheckBox();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.myContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -197,9 +197,9 @@
             this.chkHandleEveryNews.UseVisualStyleBackColor = true;
             this.chkHandleEveryNews.CheckedChanged += new System.EventHandler(this.chkHandleEveryNews_CheckedChanged);
             // 
-            // timer2
+            // backgroundWorker1
             // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // NewsHandler
             // 
@@ -250,7 +250,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbListWebsiteTypes;
         private System.Windows.Forms.CheckBox chkHandleEveryNews;
-        private System.Windows.Forms.Timer timer2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
 
 
     }
