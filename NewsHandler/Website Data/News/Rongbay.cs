@@ -24,27 +24,40 @@ namespace MyUtility.Data.News
         }
 
         public static void RedirectActiveLink(System.Windows.Forms.WebBrowser wbr)
-        {
-            //wbr.DocumentCompleted += wbr_DocumentCompleted_RedirectActiveLink;
+        {            
             do
             {
-                System.Text.StringBuilder scriptCode = new System.Text.StringBuilder();
-                scriptCode.Append("function ExecuteJS(){");
-                scriptCode.Append("    $('.Cp .xS .y6').each(function(){");
-                scriptCode.Append("        alert('111');");
-                scriptCode.Append("        var t = $(this).children(\"span:first-child\").html();");
-                scriptCode.Append("        if(t.indexOf(\"Kích hoạt tài khoản VietID\") != -1){");
-                scriptCode.Append("            alert('2222');");
-                scriptCode.Append("            $('.aqw').click(function(){");
-                scriptCode.Append("                alert('333');");
-                scriptCode.Append("            });");
-                scriptCode.Append("        }");
-                scriptCode.Append("    });");
-                scriptCode.Append("}");
-                //wbr.Document.InvokeScript("eval", new Object[] { scriptCode.ToString() });
-                wbr.Document.InvokeScript("execScript", new Object[] { scriptCode.ToString(), "JavaScript" });
-                wbr.Document.InvokeScript("ExecuteJS");                    
-            } while (wbr.Url.AbsoluteUri.IndexOf("/#inbox") != -1 && wbr.DocumentText.IndexOf("class=\"UI\"") == -1);
+                try
+                {
+                    if (wbr.ReadyState == System.Windows.Forms.WebBrowserReadyState.Complete)
+                    {
+                        if (wbr.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
+                        {
+                            System.Text.StringBuilder scriptCode = new System.Text.StringBuilder();
+                            scriptCode.Append("function ExecuteJS(){");
+                            scriptCode.Append("    $('.Cp .xS .y6').each(function(){");
+                            scriptCode.Append("        alert('111');");
+                            scriptCode.Append("        var t = $(this).children(\"span:first-child\").html();");
+                            scriptCode.Append("        if(t.indexOf(\"Kích hoạt tài khoản VietID\") != -1){");
+                            scriptCode.Append("            alert('2222');");
+                            scriptCode.Append("             $('.aqw').click(function(){");
+                            scriptCode.Append("                alert('333');");
+                            scriptCode.Append("            });");
+                            scriptCode.Append("        }");
+                            scriptCode.Append("    });");
+                            scriptCode.Append("}");
+                            //wbr.Document.InvokeScript("eval", new Object[] { scriptCode.ToString() });
+                            wbr.Document.InvokeScript("execScript", new Object[] { scriptCode.ToString(), "JavaScript" });
+                            wbr.Document.InvokeScript("ExecuteJS");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string msg = ex.Message;
+                }
+                
+            } while (wbr.DocumentText.IndexOf("class=\"UI\"") == -1);
             Login();
         }
 
