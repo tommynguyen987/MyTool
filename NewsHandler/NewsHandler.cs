@@ -1,5 +1,6 @@
 ﻿using MyUtility.Data.Job;
 using MyUtility.Data.News;
+using Gecko;
 using System;
 using System.Windows.Forms;
 
@@ -47,7 +48,8 @@ namespace MyUtility
         public NewsHandler()
         {
             InitializeComponent();
-            //StartUpManager.AddApplicationToCurrentUserStartup("NewsHandler");
+            Gecko.Xpcom.Initialize(".\\xulrunner");
+            //StartUpManager.AddApplicationToCurrentUserStartup("NewsHandler");            
         }
 
         #region Methods 
@@ -116,15 +118,7 @@ namespace MyUtility
         {
 
         }
-
-        public static void AddScriptElement(System.Windows.Forms.WebBrowser wbr, string scriptCode)
-        {
-            dynamic document = wbr.Document;
-            dynamic head = document.GetElementsByTagName("head")[0];
-            dynamic scriptEl = document.CreateElement("script");
-            scriptEl.SetAttribute("text", scriptCode.ToString());
-            head.AppendChild(scriptEl);                       
-        }
+        
         #endregion
 
         private void NewsHandler_Load(object sender, EventArgs e)
@@ -193,8 +187,11 @@ namespace MyUtility
                     switch (cbListWebsites.SelectedIndex)
                     {
                         case 1://57:
-                            Rongbay.PostRequest(webBrowser1, timer1);
-                            backgroundWorker1.RunWorkerAsync();
+                            geckoWebBrowser1.Navigate("https://www.google.com.vn");
+                            //Rongbay.PostRequest(webBrowser1, timer1);                            
+                            timer2.Enabled = true;
+                            timer2.Interval = 7000;
+                            timer2.Start();
                             break;
                         case 2://58:
                             Raocucnhanh.PostRequest(webBrowser1, timer1);
@@ -307,7 +304,7 @@ namespace MyUtility
                         default:
                             MessageBox.Show("Vui lòn chọn trang web đăng tin!");
                             break;
-                    }
+                    }                    
                 }
                 else //Xử lý tất cả các trang web đăng tin rao vặt theo hàng đợi
                 {
@@ -317,15 +314,7 @@ namespace MyUtility
             #endregion
 
             EnableFunctions(true);
-        }
-
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            if (!e.Cancel)
-            {
-                Rongbay.RedirectActiveLink(webBrowser1);
-            }
-        }       
+        }   
 
         private void cbListWebsiteTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -433,7 +422,15 @@ namespace MyUtility
                 
             }
         }
-                
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (webBrowser1.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
+            {
+                Rongbay.RedirectActiveLink(webBrowser1, timer2);                
+            }
+        }   
+    
         private void NewsHandler_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
@@ -462,37 +459,6 @@ namespace MyUtility
         {
             myNotifyIcon.Dispose();
             this.Dispose();
-        }                                                         
-    }
-
-    public class UserInfo
-    {
-        private static string username = "thuvanntp90";
-        public static string Username
-        {
-            get { return username; }
-            set { username = value; }
-        }
-
-        private static string email = "thuvanntp@gmail.com";
-        public static string Email
-        { 
-            get { return email; } 
-            set { email = value; } 
-        }
-
-        private static string password = "thuvan";
-        public static string Password 
-        { 
-            get { return password; } 
-            set { password = value; } 
-        }
-
-        private static string fullname = "Nguyễn Thị Thu Vân";
-        public static string Fullname 
-        { 
-            get { return fullname; } 
-            set { fullname = value; } 
-        }
+        }                                                              
     }
 }

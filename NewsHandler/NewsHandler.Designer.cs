@@ -46,7 +46,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbListWebsiteTypes = new System.Windows.Forms.ComboBox();
             this.chkHandleEveryNews = new System.Windows.Forms.CheckBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
             this.myContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -197,15 +198,24 @@
             this.chkHandleEveryNews.UseVisualStyleBackColor = true;
             this.chkHandleEveryNews.CheckedChanged += new System.EventHandler(this.chkHandleEveryNews_CheckedChanged);
             // 
-            // backgroundWorker1
+            // timer2
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // geckoWebBrowser1
+            // 
+            this.geckoWebBrowser1.Location = new System.Drawing.Point(0, 135);
+            this.geckoWebBrowser1.Name = "geckoWebBrowser1";
+            this.geckoWebBrowser1.Size = new System.Drawing.Size(925, 505);
+            this.geckoWebBrowser1.TabIndex = 6;
+            this.geckoWebBrowser1.UseHttpActivityObserver = false;
             // 
             // NewsHandler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 640);
+            this.Controls.Add(this.geckoWebBrowser1);
             this.Controls.Add(this.chkHandleEveryNews);
             this.Controls.Add(this.btnUpdateNews);
             this.Controls.Add(this.btnDeleteNews);
@@ -250,7 +260,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbListWebsiteTypes;
         private System.Windows.Forms.CheckBox chkHandleEveryNews;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Timer timer2;
+        private Gecko.GeckoWebBrowser geckoWebBrowser1;
 
 
     }
