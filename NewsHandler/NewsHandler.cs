@@ -1,6 +1,7 @@
 ﻿using MyUtility.Data.Job;
 using MyUtility.Data.News;
 using Gecko;
+using Gecko.DOM;
 using System;
 using System.Windows.Forms;
 
@@ -48,7 +49,8 @@ namespace MyUtility
         public NewsHandler()
         {
             InitializeComponent();
-            Gecko.Xpcom.Initialize(".\\xulrunner");
+            var path = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "xulrunner");
+            Xpcom.Initialize(path);
             //StartUpManager.AddApplicationToCurrentUserStartup("NewsHandler");            
         }
 
@@ -187,8 +189,7 @@ namespace MyUtility
                     switch (cbListWebsites.SelectedIndex)
                     {
                         case 1://57:
-                            geckoWebBrowser1.Navigate("https://www.google.com.vn");
-                            //Rongbay.PostRequest(webBrowser1, timer1);                            
+                            Rongbay.PostRequest(geckoWebBrowser1, timer1);                            
                             timer2.Enabled = true;
                             timer2.Interval = 7000;
                             timer2.Start();
@@ -425,9 +426,9 @@ namespace MyUtility
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (webBrowser1.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
+            if (geckoWebBrowser1.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
             {
-                Rongbay.RedirectActiveLink(webBrowser1, timer2);                
+                Rongbay.RedirectActiveLink(geckoWebBrowser1, timer2);                
             }
         }   
     
@@ -459,6 +460,7 @@ namespace MyUtility
         {
             myNotifyIcon.Dispose();
             this.Dispose();
-        }                                                              
+        }
+                                                       
     }
 }

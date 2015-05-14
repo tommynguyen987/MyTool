@@ -26,18 +26,19 @@ F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\MyUtility.Properties.Resou
 F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.csproj.GenerateResource.Cache
 F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.exe
 F:\WORK\PRIVATE BUSINESS\MyTool\NewsHandler\obj\Debug\NewsHandler.pdb
-D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\NewsHandler.exe.config
-D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\NewsHandler.exe
-D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\NewsHandler.pdb
-D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\Geckofx-Core.dll
 D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\Geckofx-Winforms.dll
+D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\Geckofx-Core.dll
 D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\Geckofx-Core.pdb
 D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\Geckofx-Winforms.pdb
+D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\NewsHandler.csprojResolveAssemblyReference.cache
 D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\MyUtility.NewsHandler.resources
 D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\MyUtility.Properties.Resources.resources
 D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\NewsHandler.csproj.GenerateResource.Cache
 D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\NewsHandler.exe
 D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\NewsHandler.pdb
+D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\NewsHandler.exe.config
+D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\NewsHandler.exe
+D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\NewsHandler.pdb
 D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\xulrunner\AccessibleMarshal.dll
 D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\xulrunner\breakpadinjector.dll
 D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\xulrunner\crashreporter.exe
@@ -84,4 +85,3 @@ D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\xulrunner\platform.ini
 D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\xulrunner\precomplete
 D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\xulrunner\README.xulrunner
 D:\SHARE\MY\Work\MyTool\NewsHandler\bin\Debug\xulrunner\softokn3.chk
-D:\SHARE\MY\Work\MyTool\NewsHandler\obj\Debug\NewsHandler.csprojResolveAssemblyReference.cache

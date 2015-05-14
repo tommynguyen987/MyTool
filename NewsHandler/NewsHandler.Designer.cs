@@ -204,9 +204,9 @@
             // 
             // geckoWebBrowser1
             // 
-            this.geckoWebBrowser1.Location = new System.Drawing.Point(0, 135);
+            this.geckoWebBrowser1.Location = new System.Drawing.Point(1, 135);
             this.geckoWebBrowser1.Name = "geckoWebBrowser1";
-            this.geckoWebBrowser1.Size = new System.Drawing.Size(925, 505);
+            this.geckoWebBrowser1.Size = new System.Drawing.Size(924, 505);
             this.geckoWebBrowser1.TabIndex = 6;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
             // 
