@@ -89,6 +89,7 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(924, 505);
             this.webBrowser1.TabIndex = 3;
+            this.webBrowser1.Visible = false;
             // 
             // timer1
             // 

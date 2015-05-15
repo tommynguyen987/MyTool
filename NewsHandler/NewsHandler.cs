@@ -191,7 +191,7 @@ namespace MyUtility
                         case 1://57:
                             Rongbay.PostRequest(geckoWebBrowser1, timer1);                            
                             timer2.Enabled = true;
-                            timer2.Interval = 7000;
+                            timer2.Interval = 5000;
                             timer2.Start();
                             break;
                         case 2://58:
@@ -460,7 +460,6 @@ namespace MyUtility
         {
             myNotifyIcon.Dispose();
             this.Dispose();
-        }
-                                                       
+        }                                                       
     }
 }

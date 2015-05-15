@@ -1,12 +1,10 @@
-﻿using Gecko;
-using Gecko.DOM;
-using Gecko.Events;
-using System;
+﻿using System;
 
 namespace MyUtility.Data.News
 {
     public class Rongbay
     {
+        #region WebBrowser of WinForm
         public static void PostRequest(System.Windows.Forms.WebBrowser wbr, System.Windows.Forms.Timer timer)
         {
             var url = "http://vietid.net/OauthServerV2/RegisterV2?app_key=07234206219b51690a3bc234115a34f2&clearsession=1&oauth_token=";
@@ -112,13 +110,9 @@ namespace MyUtility.Data.News
             }
         }
 
-        private static void Login()
-        {
-
-        }        
+        #endregion
         
-
-        public static void PostRequest(GeckoWebBrowser browser, System.Windows.Forms.Timer timer)
+        public static void PostRequest(Gecko.GeckoWebBrowser browser, System.Windows.Forms.Timer timer)
         {
             var url = "http://vietid.net/OauthServerV2/RegisterV2?app_key=07234206219b51690a3bc234115a34f2&clearsession=1&oauth_token=";
             browser.Navigate(url);
@@ -129,16 +123,16 @@ namespace MyUtility.Data.News
 
         private static void browser_DocumentCompleted_PostRequest(object sender, EventArgs e)
         {
-            GeckoWebBrowser browser = sender as  GeckoWebBrowser;
+            Gecko.GeckoWebBrowser browser = sender as  Gecko.GeckoWebBrowser;
             try
             {
-                GeckoInputElement email = new GeckoInputElement(browser.Document.GetElementsByName("email")[0].DomObject);
+                Gecko.DOM.GeckoInputElement email = new Gecko.DOM.GeckoInputElement(browser.Document.GetElementsByName("email")[0].DomObject);
                 email.Value = Utility.RandomEmail();
-                GeckoInputElement password = new GeckoInputElement(browser.Document.GetElementsByName("password")[0].DomObject);
+                Gecko.DOM.GeckoInputElement password = new Gecko.DOM.GeckoInputElement(browser.Document.GetElementsByName("password")[0].DomObject);
                 password.Value = UserInfo.Password = "12345678";
-                GeckoInputElement confirmpassword = new GeckoInputElement(browser.Document.GetElementsByName("confirm_password")[0].DomObject);
+                Gecko.DOM.GeckoInputElement confirmpassword = new Gecko.DOM.GeckoInputElement(browser.Document.GetElementsByName("confirm_password")[0].DomObject);
                 confirmpassword.Value = UserInfo.Password = "12345678";
-                GeckoInputElement fullname = new GeckoInputElement(browser.Document.GetElementsByName("full_name")[0].DomObject);
+                Gecko.DOM.GeckoInputElement fullname = new Gecko.DOM.GeckoInputElement(browser.Document.GetElementsByName("full_name")[0].DomObject);
                 fullname.Value = UserInfo.Fullname = "tester";
                 browser.Navigate("javascript:void(document.forms[0].submit())");
                 browser.DocumentCompleted -= browser_DocumentCompleted_PostRequest;
@@ -147,11 +141,11 @@ namespace MyUtility.Data.News
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Error occurs when posting registration request!" + System.Environment.NewLine + ex.Message);
+                System.Windows.Forms.MessageBox.Show("Error occurs when posting registration request!" + System.Environment.NewLine + ex.Message, "Error!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
 
-        private static void AccountConfirm(GeckoWebBrowser browser)
+        private static void AccountConfirm(Gecko.GeckoWebBrowser browser)
         {
             var url = "https://accounts.google.com/ServiceLogin?service=mail&continue=https://mail.google.com/mail/&hl=vi";
             browser.Navigate(url);
@@ -160,59 +154,65 @@ namespace MyUtility.Data.News
 
         private static void browser_DocumentCompleted_AccountConfirm(object sender, EventArgs e)
         {
-            GeckoWebBrowser browser = sender as GeckoWebBrowser;
+            Gecko.GeckoWebBrowser browser = sender as Gecko.GeckoWebBrowser;
             try
             {
-                GeckoInputElement email = new GeckoInputElement(browser.Document.GetElementsByName("Email")[0].DomObject);
+                Gecko.DOM.GeckoInputElement email = new Gecko.DOM.GeckoInputElement(browser.Document.GetElementsByName("Email")[0].DomObject);
                 email.Value = UserInfo.Email = "buitran986@gmail.com";
-                GeckoInputElement password = new GeckoInputElement(browser.Document.GetElementsByName("Passwd")[0].DomObject);
+                Gecko.DOM.GeckoInputElement password = new Gecko.DOM.GeckoInputElement(browser.Document.GetElementsByName("Passwd")[0].DomObject);
                 password.Value = UserInfo.Password = "yeuem1234567890";                
                 browser.Navigate("javascript:void(document.forms[0].submit())");
                 browser.DocumentCompleted -= browser_DocumentCompleted_AccountConfirm;                
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Error occurs when confirming account!" + System.Environment.NewLine + ex.Message);
+                System.Windows.Forms.MessageBox.Show("Error occurs when confirming account!" + System.Environment.NewLine + ex.Message, "Error!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
                 
-        public static void RedirectActiveLink(GeckoWebBrowser browser , System.Windows.Forms.Timer timer)
+        public static void RedirectActiveLink(Gecko.GeckoWebBrowser browser , System.Windows.Forms.Timer timer)
         {
             try
             {
                 do
                 {
                     timer.Stop();
-                    timer.Enabled = false;
-                    HttpSession session = new HttpSession();
-                    string content = session.GetMethodDownload(browser.Url.AbsoluteUri, true, false, false, true);
-                    System.Text.StringBuilder scriptCode = new System.Text.StringBuilder();
-                    scriptCode.Append("function ExecuteJS(){");
-                    scriptCode.Append("    $('.Cp .xS .y6').each(function(){");
-                    scriptCode.Append("        alert('111');");
-                    scriptCode.Append("        var t = $(this).children(\"span:first-child\").html();");
-                    scriptCode.Append("        if(t.indexOf(\"Kích hoạt tài khoản VietID\") != -1){");
-                    scriptCode.Append("            alert('2222');");
-                    scriptCode.Append("             $('.aqw').click(function(){");
-                    scriptCode.Append("                alert('333');");
-                    scriptCode.Append("            });");
-                    scriptCode.Append("        }");
-                    scriptCode.Append("    });");
-                    scriptCode.Append("}");
-                    using (var context = new AutoJSContext(browser.Window.JSContext))
-                    {
-                        context.EvaluateScript(scriptCode.ToString());
-                    }
-
+                    timer.Enabled = false;                  
+                    System.Text.StringBuilder scriptCode = new System.Text.StringBuilder();                    
+                    scriptCode.Append("$('.Cp .xS .y6').each(function(){");
+                    scriptCode.Append("    alert('111');");
+                    scriptCode.Append("    var t = $(this).children('span:first-child').html();");
+                    scriptCode.Append("    if(t.indexOf(\"Kích hoạt tài khoản VietID\") != -1){");
+                    scriptCode.Append("        alert('2222');");
+                    scriptCode.Append("        $(this).parent('.xT').parent('.xS').parent('.a4W').parent('.zA').addClass('aqw');");
+                    scriptCode.Append("        $('.aqw').click(function(){");
+                    scriptCode.Append("            alert('333');");
+                    scriptCode.Append("        });");
+                    scriptCode.Append("    }");
+                    scriptCode.Append("});");     
+                    var jQuery = new Gecko.JQuery.JQueryExecutor(browser.Window);
+                    jQuery.ExecuteJQuery(scriptCode.ToString());                    
                 } while (browser.Document.Body.InnerHtml.IndexOf("class=\"UI\"") == -1);
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Error occurs when redirecting link!" + System.Environment.NewLine + ex.Message);                
+                System.Windows.Forms.MessageBox.Show("Error occurs when redirecting link!" + System.Environment.NewLine + ex.Message,"Error!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);                
             }            
             Login();
-        }   
-        
+        }
+
+        private static void Login()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error occurs when logging in!" + System.Environment.NewLine + ex.Message, "Error!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+        }        
+
         public static void RefreshNews(System.Windows.Forms.WebBrowser wbr)
         {
             int sumPostedNews = GetSumPostedNews(wbr);
