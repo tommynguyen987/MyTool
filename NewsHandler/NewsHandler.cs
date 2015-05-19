@@ -129,7 +129,6 @@ namespace MyUtility
             cbListWebsiteTypes.SelectedIndex = 0;
             myNotifyIcon.BalloonTipText = "Your application is still working" + System.Environment.NewLine + "Double click into icon to show application.";
             EnableFunctions(false);
-            timer1.Enabled = false;
             //WindowsInSystemTray(true);
         }
         
@@ -189,9 +188,8 @@ namespace MyUtility
                     switch (cbListWebsites.SelectedIndex)
                     {
                         case 1://57:
-                            Rongbay.PostRequest(geckoWebBrowser1, timer1);                            
+                            Rongbay.PostRequest(geckoWebBrowser1);                            
                             timer2.Enabled = true;
-                            timer2.Interval = 5000;
                             timer2.Start();
                             break;
                         case 2://58:
@@ -428,7 +426,7 @@ namespace MyUtility
         {
             if (geckoWebBrowser1.Url.AbsoluteUri.IndexOf("/#inbox") != -1)
             {
-                Rongbay.RedirectActiveLink(geckoWebBrowser1, timer2);                
+                Rongbay.RedirectActiveLink(geckoWebBrowser1, timer1, timer2);                
             }
         }   
     

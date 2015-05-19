@@ -93,7 +93,6 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -201,13 +200,14 @@
             // 
             // timer2
             // 
+            this.timer2.Interval = 5000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // geckoWebBrowser1
             // 
-            this.geckoWebBrowser1.Location = new System.Drawing.Point(1, 135);
+            this.geckoWebBrowser1.Location = new System.Drawing.Point(0, 135);
             this.geckoWebBrowser1.Name = "geckoWebBrowser1";
-            this.geckoWebBrowser1.Size = new System.Drawing.Size(924, 505);
+            this.geckoWebBrowser1.Size = new System.Drawing.Size(925, 505);
             this.geckoWebBrowser1.TabIndex = 6;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
             // 
