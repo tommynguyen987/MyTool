@@ -1,0 +1,8 @@
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\DeleteFiles\DeleteFiles\bin\Debug\DeleteFiles.exe
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\DeleteFiles\DeleteFiles\bin\Debug\DeleteFiles.exe.config
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\DeleteFiles\DeleteFiles\bin\Debug\DeleteFiles.pdb
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\DeleteFiles\DeleteFiles\obj\Debug\DeleteFiles.AppDeleteFiles.resources
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\DeleteFiles\DeleteFiles\obj\Debug\DeleteFiles.Properties.Resources.resources
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\DeleteFiles\DeleteFiles\obj\Debug\DeleteFiles.csproj.GenerateResource.Cache
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\DeleteFiles\DeleteFiles\obj\Debug\DeleteFiles.exe
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\DeleteFiles\DeleteFiles\obj\Debug\DeleteFiles.pdb

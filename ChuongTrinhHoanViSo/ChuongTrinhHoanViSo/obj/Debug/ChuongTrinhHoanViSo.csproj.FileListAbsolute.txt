@@ -1,0 +1,8 @@
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\ChuongTrinhHoanViSo\ChuongTrinhHoanViSo\bin\Debug\ChuongTrinhHoanViDaySo.exe.config
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\ChuongTrinhHoanViSo\ChuongTrinhHoanViSo\bin\Debug\ChuongTrinhHoanViDaySo.exe
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\ChuongTrinhHoanViSo\ChuongTrinhHoanViSo\bin\Debug\ChuongTrinhHoanViDaySo.pdb
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\ChuongTrinhHoanViSo\ChuongTrinhHoanViSo\obj\Debug\ChuongTrinhHoanViSo.formHoanVi.resources
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\ChuongTrinhHoanViSo\ChuongTrinhHoanViSo\obj\Debug\ChuongTrinhHoanViDaySo.Properties.Resources.resources
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\ChuongTrinhHoanViSo\ChuongTrinhHoanViSo\obj\Debug\ChuongTrinhHoanViSo.csproj.GenerateResource.Cache
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\ChuongTrinhHoanViSo\ChuongTrinhHoanViSo\obj\Debug\ChuongTrinhHoanViDaySo.exe
+D:\WORK\Projects\Project GITHUB\WORKING\DEMO\ChuongTrinhHoanViSo\ChuongTrinhHoanViSo\obj\Debug\ChuongTrinhHoanViDaySo.pdb
